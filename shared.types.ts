@@ -1,4 +1,4 @@
-import type { ClientEvents, Awaitable, Client } from "discord.js";
+import type { ClientEvents, Awaitable, SlashCommandBuilder, CommandInteraction } from "discord.js";
 
 export type EventKeys = keyof ClientEvents;
 
@@ -9,4 +9,9 @@ export type EventCallback<T extends EventKeys> = (
 export type Event<T extends EventKeys = EventKeys> = {
     clientEvent: T;
     callback: EventCallback<T>;
+}
+
+export type Command = {
+  data: SlashCommandBuilder;
+  execute(interaction: CommandInteraction): Promise<void>;
 }
