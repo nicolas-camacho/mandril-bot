@@ -13,7 +13,9 @@ const client = new Client({
     ],
 });
 
-client.login(process.env.DISCORD_TOKEN).catch((err) => {
+const token = process.env.DISCORD_TOKEN as string
+
+client.login(token).catch((err) => {
     console.error('[Login Error]', err);
     process.exit(1)
 });
