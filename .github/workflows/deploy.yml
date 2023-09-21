@@ -27,7 +27,7 @@ jobs:
         run: "bun install" # 📝 Update the build command(s) if necessary
 
       - name: Rename variable for bun to build
-        run: "sed -i 's/var getZlibSync = .*;/var getZlibSync = null;/' example.js"
+        run: "sed -i 's/var getZlibSync = .*;/var getZlibSync = null;/' ./node_modules/@discordjs/ws/dist/index.js"
 
       - name: Build step
         run: "bun build --target=bun ./index.ts --outfile=index.js"
