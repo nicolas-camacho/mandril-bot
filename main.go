@@ -8,10 +8,17 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	session, err := discordgo.New("Bot MTE1MjQ1MjQ5MjU3NjE3NDEwMQ.GbDvVH.HNccpxNqHvQ31eVLZy8Qp2aa5t3czj7QyZu1zY")
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	session, err := discordgo.New("Bot " + os.Getenv("DISCORD_TOKEN"))
 
 	if err != nil {
 		log.Fatal(err)
